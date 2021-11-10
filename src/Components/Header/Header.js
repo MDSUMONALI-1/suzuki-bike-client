@@ -15,10 +15,10 @@ const Header = () => {
                     <Navbar.Collapse className="justify-content-end">
                         <Link  to="/home">Home</Link>
                         <Link to="/bikes">Bikes</Link>
-                        <Link to="/register">Register</Link>
+                      
                         {user?.email ?
                             <Button onClick={logOut} variant="light">Logout</Button> :
-                            <Nav.Link as={Link} to="/login">Login</Nav.Link>}
+                            <Nav.Link as={Link} to="/Register">Register</Nav.Link>}
                         <Navbar.Text>
                             Signed in as: <a href="#login">{user?.displayName}</a>
                         </Navbar.Text>

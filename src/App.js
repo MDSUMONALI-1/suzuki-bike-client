@@ -1,18 +1,20 @@
 // import { Route,BrowserRouter, Switch } from 'react-router';
 import {  Route,BrowserRouter, Switch } from 'react-router-dom';
 import './App.css';
+import Bikes from './Components/Bikes/Bikes';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import NotFound from './Components/NotFound/NotFound';
 import Register from './Components/Register/Register';
-import Services from './Components/Services/Services';
+import AuthProvider from './contexts/AuthProvider';
 
 function App() {
   return (
     <div className="App">
    <h2>welcome</h2>
+   <AuthProvider>
    <BrowserRouter>
           <Header></Header>
           <Switch>
@@ -23,7 +25,7 @@ function App() {
               <Home></Home>
             </Route>
             <Route path="/bikes">
-            <Services></Services>
+            <Bikes></Bikes>
             </Route>
             <Route path="/login">
               <Login></Login>
@@ -37,6 +39,7 @@ function App() {
           </Switch>
           <Footer></Footer>
         </BrowserRouter>
+   </AuthProvider>
     </div>
   );
 }
