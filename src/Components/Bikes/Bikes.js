@@ -20,6 +20,7 @@ const Bikes = () => {
                         bike={bike}
                     ></Bike>)
                 }
+                 
             </div>
         </div>
     );

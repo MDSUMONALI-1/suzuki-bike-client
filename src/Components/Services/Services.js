@@ -14,11 +14,12 @@ const Services = () => {
             <h2 className="text-success mt-8">Bikes</h2>
             <div className="service-container">
                 {
-                    services.map(service => <Service
+                    services.slice(0,6).map(service => <Service
                         key={service.id}
                         service={service}
                     ></Service>)
                 }
+               
             </div>
         </div>
     );
