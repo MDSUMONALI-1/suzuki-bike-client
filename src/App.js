@@ -7,6 +7,8 @@ import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import NotFound from './Components/NotFound/NotFound';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import Purchase from './Components/Purchase/Purchase';
 import Register from './Components/Register/Register';
 import AuthProvider from './contexts/AuthProvider';
 
@@ -27,6 +29,9 @@ function App() {
             <Route path="/bikes">
             <Bikes></Bikes>
             </Route>
+            <PrivateRoute path="/purchase/:bikeId">
+            <Purchase></Purchase>
+            </PrivateRoute>
             <Route path="/login">
               <Login></Login>
             </Route>

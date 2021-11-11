@@ -10,7 +10,7 @@ const Bike = ({ bike }) => {
             <img src={img} alt="" />
             <h3>{name}</h3>
             <p className="px-5">{description}</p>
-            <Link to={`/placeorder/${_id}`}>
+            <Link to={`/purchase/${_id}`}>
                <button className="btn btn-danger">Book {name}</button>
             </Link>
         </div>
