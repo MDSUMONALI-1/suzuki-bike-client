@@ -5,7 +5,7 @@ import useFirebase from '../../hooks/useFirebase';
 
 
 const Login = () => {
-    const { signInUsingGoogle,handleEmailChange, handlePasswordChange,handleRegistration} = useFirebase();
+    const { signInUsingGoogle,handleEmailChange,processLogin, handlePasswordChange,handleRegistration} = useFirebase();
     const location = useLocation();
     const history = useHistory();
     const redirect_uri = location.state?.from || '/home';
@@ -32,7 +32,7 @@ const Login = () => {
           <div className="col-sm-10">
             <input type="password" onBlur={handlePasswordChange} className="form-control" id="inputPassword3" required />
           </div>
-          <button onSubmit={handleRegistration} type="submit" className="btn btn-primary">
+          <button onClick={processLogin} type="submit" className="btn btn-primary">
           Login
         </button>
         </div> 

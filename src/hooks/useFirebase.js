@@ -119,7 +119,7 @@ const useFirebase = () => {
     return {
         user,
         isLoading,
-        signInUsingGoogle ,handleRegistration ,isLogin ,handleNameChange ,handleEmailChange, handlePasswordChange, toggleLogin,error,
+        signInUsingGoogle ,handleRegistration,processLogin ,isLogin ,handleNameChange ,handleEmailChange, handlePasswordChange, toggleLogin,error,
         logOut
     }
 }
