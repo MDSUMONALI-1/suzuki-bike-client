@@ -1,6 +1,6 @@
 live site:https://suzuki-bikes.web.app/
 
-Home page will have a header (simple navbar), banner, products, reviews, and footer. On the home page, the products will have a maximum of 6 items/products. You can put one or more products in a row based on your design. Each product should have a relevant name, image, short description, add a purchase or buy now button. If a user clicks on the purchase or buy now button it will take the user to the purchase page. -c
+Home page will have a header (simple navbar), banner, products, reviews, and footer. On the home page, the products will have a maximum of 6 items/products. You can put one or more products in a row based on your design. Each product should have a relevant name, image, short description, add a purchase or buy now button. If a user clicks on the purchase or buy now button it will take the user to the purchase page. -sc
 
 Add one extra section in the home page in addition to the 5 sections mentioned above.-c
 
