@@ -1,126 +1,109 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, updateProfile , onAuthStateChanged } from "firebase/auth";
+
 import { useState, useEffect } from 'react';
-import initializeAuthentication from './../Firebase/firebase.init';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile, getIdToken, signOut } from "firebase/auth";
+import initializeAuthentication from "../Firebase/firebase.init";
 
-initializeAuthentication();
 
-
-const auth = getAuth();
+// initialize firebase app
+initializeAuthentication()
 
 const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const [isLogin, setIsLogin] = useState(false);
-  
-  
-    const signInUsingGoogle = () => {
-        setIsLoading(true);
-        const googleProvider = new GoogleAuthProvider();
 
-     return   signInWithPopup(auth, googleProvider)
+    const auth = getAuth();
+    const googleProvider = new GoogleAuthProvider();
+
+    const registerUser = (email, password, name, history) => {
+      setIsLoading(true);
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
             
+                const newUser = { email, displayName: name };
+                setUser(newUser);
+                // save user to the database
+            
+                // send name to firebase after creation
+                updateProfile(auth.currentUser, {
+                    displayName: name
+                }).then(() => {
+                }).catch((error) => {
+                });
+                history.replace('/');
+            })
+            .catch((error) => {
+               
+                console.log(error);
+            })
             .finally(() => setIsLoading(false));
     }
 
-    const toggleLogin = e => {
-        setIsLogin(e.target.checked)
-      }
-    
-      const handleNameChange = e => {
-        setName(e.target.value);
-      }
-      const handleEmailChange = e => {
-        setEmail(e.target.value);
-      }
-    
-      const handlePasswordChange = e => {
-        setPassword(e.target.value)
-      }
-    
-      const handleRegistration = e => {
-        e.preventDefault();
-        console.log(email, password);
-       
-    
-        if (isLogin) {
-          processLogin(email, password);
-        }
-        else {
-          registerNewUser(email, password);
-        }
-    
-      }
-    
-      const processLogin = (email, password) => {
+    const loginUser = (email, password, location, history) => {
+      setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
-          .then(result => {
-            const user = result.user;
-            console.log(user);
-            setError('');
-          })
-          .catch(error => {
-            setError(error.message);
-          })
-      }
-    
-      const registerNewUser = (email, password) => {
-        createUserWithEmailAndPassword(auth, email, password)
-          .then(result => {
-            const user = result.user;
-            console.log(user);
-            setError('');
-            verifyEmail();
-            setUserName();
-          })
-          .catch(error => {
-            setError(error.message);
-          })
-      }
-    
-      const setUserName = () => {
-        updateProfile(auth.currentUser, { displayName: name })
-          .then(result => { })
-      }
-    
-      const verifyEmail = () => {
-        sendEmailVerification(auth.currentUser)
-          .then(result => {
-            console.log(result);
-          })
-      }
-   
-      
-    // observe user state change
+            .then((userCredential) => {
+                const destination = location?.state?.from || '/';
+                history.replace(destination);
+               
+            })
+            .catch((error) => {
+           
+            })
+            .finally(() => setIsLoading(false));
+    }
+
+    const signInWithGoogle = (location, history) => {
+      setIsLoading(true);
+        signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                const user = result.user;
+                
+             
+                const destination = location?.state?.from || '/';
+                history.replace(destination);
+            }).catch((error) => {
+            
+            }).finally(() => setIsLoading(false));
+    }
+
+    // observer user state
     useEffect(() => {
-        const unsubscribed = onAuthStateChanged(auth, user => {
+        const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
-            }
-            else {
+               
+            } else {
                 setUser({})
-            }
-            setIsLoading(false);
+            }setIsLoading(false);
+           
         });
         return () => unsubscribed;
     }, [])
 
+  
+
     const logOut = () => {
-        setIsLoading(true);
-        signOut(auth)
-            .then(() => { })
-            .finally(() => setIsLoading(false));
+      setIsLoading(true);
+        signOut(auth).then(() => {
+            // Sign-out successful.
+        }).catch((error) => {
+            // An error happened.
+        })
+        .finally(() => setIsLoading(false));
     }
-    
+
+
 
     return {
         user,
+      
+        // token,
         isLoading,
-        signInUsingGoogle ,handleRegistration,processLogin ,isLogin ,handleNameChange ,handleEmailChange, handlePasswordChange, toggleLogin,error,
-        logOut
+        // authError,
+        registerUser,
+        loginUser,
+        signInWithGoogle,
+        logOut,
     }
 }
 

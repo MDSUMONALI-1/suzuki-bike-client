@@ -1,46 +1,47 @@
-import React from 'react';
-import { Form } from 'react-bootstrap';
-import {  useLocation, useHistory } from 'react-router-dom';
-import useFirebase from '../../hooks/useFirebase';
-
+import React,{useState} from 'react';
+import { NavLink } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-    const { signInUsingGoogle,handleEmailChange,processLogin, handlePasswordChange,handleRegistration} = useFirebase();
-    const location = useLocation();
-    const history = useHistory();
-    const redirect_uri = location.state?.from || '/home';
+  const {user, logOut,isLoading,loginUser} =useAuth();
+  const [loginData, setLoginData] = useState({});
+  const handleOnChange = e =>{
+const field = e.target.name;
+const value = e.target.value;
+const newLoginData = { ...loginData };
+newLoginData[field] = value;
+setLoginData(newLoginData);
+console.log(field ,value)
 
-
-    const handleGoogleLogin = () => {
-        signInUsingGoogle()
-            .then(result => {
-                history.push(redirect_uri);
-            })
-    }
-    return (
-        <div>
-            <h2>Please Login</h2>
-            <Form onSubmit={handleRegistration}>
-            <div className="row mb-3">
-          <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email</label>
-          <div className="col-sm-10">
-            <input onBlur={handleEmailChange} type="email" className="form-control" id="inputEmail3" required />
-          </div>
-        </div>
-        <div className="row mb-3">
-          <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</label>
-          <div className="col-sm-10">
-            <input type="password" onBlur={handlePasswordChange} className="form-control" id="inputPassword3" required />
-          </div>
-          <button onClick={processLogin} type="submit" className="btn btn-primary">
-          Login
-        </button>
-        </div> 
-            </Form>
-          
-            <button   onClick={handleGoogleLogin} className="btn btn-warning">Google Sign In</button>
-        </div>
-    );
+  }
+  const handleLoginSubmit = e => {
+    loginUser(loginData.email, loginData.password1);
+    e.preventDefault();
+    
+  }
+  return (
+    <div>
+   <form onSubmit={handleLoginSubmit}>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" 
+    name="email"
+    onBlur={handleOnChange}
+    class="form-control" id="exampleInputEmail1"/>
+   
+  </div>
+  <div class="mb-3">
+    <label for="Password1" class="form-label">Password</label>
+    <input type="password1"  name="password1"
+    onBlur={handleOnChange} class="form-control" id="exampleInputPassword1"/>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">login</button>
+  <br/>
+  <NavLink to="/login">New user?please Register</NavLink>
+</form>
+    </div>
+  );
 };
 
 export default Login;

@@ -1,55 +1,62 @@
-import React from 'react';
-import useFirebase from '../../hooks/useFirebase';
+import React, { useState } from 'react';
+
+
+import { NavLink, useHistory } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const Register = () => {
-    const { signInUsingGoogle ,handleRegistration,isLogin,handleNameChange,handleEmailChange,handlePasswordChange,toggleLogin,error } = useFirebase();
-    return (
-        <div className="login-form">
-             <div className="mx-5">
-      <form onSubmit={handleRegistration}>
-        <h3 className="text-primary">Please {isLogin ? 'Login' : 'Register'}</h3>
-        {!isLogin && <div className="row mb-3">
-          <label htmlFor="inputName" className="col-sm-2 col-form-label">Name</label>
-          <div className="col-sm-10">
-            <input type="text" onBlur={handleNameChange} className="form-control" id="inputName" placeholder="Your Name" />
-          </div>
-        </div>}
-        <div className="row mb-3">
-          <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email</label>
-          <div className="col-sm-10">
-            <input onBlur={handleEmailChange} type="email" className="form-control" id="inputEmail3" required />
-          </div>
-        </div>
-        <div className="row mb-3">
-          <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</label>
-          <div className="col-sm-10">
-            <input type="password" onBlur={handlePasswordChange} className="form-control" id="inputPassword3" required />
-          </div>
-        </div>
-        <div className="row mb-3">
-          <div className="col-sm-10 offset-sm-2">
-            <div className="form-check">
-              <input onChange={toggleLogin} className="form-check-input" type="checkbox" id="gridCheck1" />
-              <label className="form-check-label" htmlFor="gridCheck1">
-                Already Registered?Please click the checkbox to login
-              </label>
-            </div>
-          </div>
-        </div>
-        <div className="row mb-3 text-danger">{error}</div>
-        <button type="submit" className="btn btn-primary">
-          {isLogin ? 'Login' : 'Register'}
-        </button>
-       
+  const [loginData, setLoginData] = useState({});
+  const history = useHistory();
+  const {user, registerUser,isLoading } = useAuth();
 
-      </form>
-      <br /><br /><br />
-      <div></div>
-      <br /><br /><br />
-      <button onClick={signInUsingGoogle} className="bg-warning">Google Sign In</button>
+  const handleOnBlur = e => {
+      const field = e.target.name;
+      const value = e.target.value;
+      const newLoginData = { ...loginData };
+      newLoginData[field] = value;
+      setLoginData(newLoginData);
+  }
+  const handleLoginSubmit = e => {
+      if (loginData.password1 !== loginData.password2) {
+          alert('Your password did not match');
+          return
+      }
+      registerUser(loginData.email, loginData.password1, loginData.name, history);
+      e.preventDefault();
+  }
+  return (
+    <div>
+      <h2>Register</h2>
+      {!isLoading &&<form onSubmit={handleLoginSubmit}>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" 
+    name="email"
+    onBlur={handleOnBlur}
+    class="form-control" id="exampleInputEmail1"/>
+   
+  </div>
+  <div class="mb-3">
+    <label for="Password1" class="form-label">Password</label>
+    <input type="password1"  name="password1"
+    onBlur={handleOnBlur} class="form-control" id="exampleInputPassword1"/>
+  </div>
+  <div class="mb-3">
+    <label for="Password2" class="form-label">Password</label>
+    <input type="password2"  name="password2"
+    onBlur={handleOnBlur} class="form-control" id="exampleInputPassword1"/>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Register</button>
+  <br/>
+  <NavLink to="/login">Already register?please login</NavLink>
+</form>}
+{isLoading &&<div class="spinner-border text-success" role="status">
+  <span class="sr-only">Loading...</span>
+</div>}
+
     </div>
-        </div>
-    );
+  );
 };
 
 export default Register;
