@@ -10,6 +10,7 @@ initializeAuthentication()
 const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const [admin, setAdmin] = useState(false);
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
@@ -21,7 +22,7 @@ const useFirebase = () => {
             
                 const newUser = { email, displayName: name };
                 setUser(newUser);
-         
+         saveUser(email, name)
                 updateProfile(auth.currentUser, {
                     displayName: name
                 }).then(() => {
@@ -78,7 +79,11 @@ const useFirebase = () => {
         return () => unsubscribed;
     }, [])
 
-  
+    useEffect(() => {
+        fetch(`https://damp-shore-20321.herokuapp.com/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
 
     const logOut = () => {
       setIsLoading(true);
@@ -90,7 +95,17 @@ const useFirebase = () => {
         .finally(() => setIsLoading(false));
     }
 
-
+    const saveUser = (email, displayName, method) => {
+        const user = { email, displayName };
+        fetch('https://damp-shore-20321.herokuapp.com/users', {
+            method:'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
 
     return {
         user,

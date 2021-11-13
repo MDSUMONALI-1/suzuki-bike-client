@@ -10,7 +10,7 @@ The purchasepage will be a private/protected route. Please make sure that if the
 
 Implement email/ password (login/Register) based login system. The registration form should have the name and once a user is logged in, the user name, and the logout button should appear on the header which will log out the user once clicked. Displaying username on the header is optional. Please note that implementing the google, facebook, or github provider based authentication is also optional. -c
 
-If a user is logged in, he/she will see another option on the header is called Dashboard and inside that dashboard a normal user (not an admin) will see options like pay,My Orders, Review, Logout. Based on your website idea, you can change the name of these menu items. The pay page will say: Payment system coming soon.
+If a user is logged in, he/she will see another option on the header is called Dashboard and inside that dashboard a normal user (not an admin) will see options like pay,My Orders, Review, Logout. Based on your website idea, you can change the name of these menu items. The pay page will say: Payment system coming soon.-c
 
 On the my orders page, the logged in user will see only his/her orders. If the user wants, he/she should be able to cancel/delete any order. Ask a confirmation message before deleting or canceling an item. Using browser confirmation dialog is ok.
 
