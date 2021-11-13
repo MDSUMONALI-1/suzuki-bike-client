@@ -1,10 +1,12 @@
 import React,{useState} from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useHistory,useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
   const {user, logOut,isLoading,loginUser} =useAuth();
   const [loginData, setLoginData] = useState({});
+  const location =useLocation();
+  const history= useHistory();
   const handleOnChange = e =>{
 const field = e.target.name;
 const value = e.target.value;
@@ -15,7 +17,7 @@ console.log(field ,value)
 
   }
   const handleLoginSubmit = e => {
-    loginUser(loginData.email, loginData.password1);
+    loginUser(loginData.email, loginData.password1 ,location, history);
     e.preventDefault();
     
   }

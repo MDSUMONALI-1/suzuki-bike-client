@@ -49,7 +49,7 @@ const Register = () => {
 
   <button type="submit" class="btn btn-primary">Register</button>
   <br/>
-  <NavLink to="/login">Already register?please login</NavLink>
+  <NavLink to="/register">Already register?please login</NavLink>
 </form>}
 {isLoading &&<div class="spinner-border text-success" role="status">
   <span class="sr-only">Loading...</span>
