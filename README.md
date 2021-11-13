@@ -16,9 +16,10 @@ On the my orders page, the logged in user will see only his/her orders. If the u
 
 On the Review page, users should be able to add a review and that review will appear on the home age. Right now you will see every review on the home page. There is no limit on the numbers of reviews or the order of the review.
 
-If an admin logs in, he/she will not see the options that a normal user sees. Insted an admin will see Manage All Orders, Add A Product, Make Admin, Manage Products Logout. Based on your website idea, you can change the name of these menu items. Details about Manage all orders or Manage products will be provided later.
+If an admin logs in, he/she will not see the options that a normal user sees. Insted an admin will see Manage All Orders, Add A Product, Make Admin, Manage Products Logout. Based on your website idea, you can change the name of these menu items. Details about Manage all orders or Manage products will be provided later.-c
 
-An Admin should be able to make another user an admin. If an admin wants, he/she will be able to add a product on the add a product page. After adding the product, this product will appear on the explore page. Please note, to add an image for a new product, you can just upload the image on any image hosting sites like imgbb, etc.and then have an input field to add the link of the image.
+An Admin should be able to make another user an admin. -c
+If an admin wants, he/she will be able to add a product on the add a product page. After adding the product, this product will appear on the explore page. Please note, to add an image for a new product, you can just upload the image on any image hosting sites like imgbb, etc.and then have an input field to add the link of the image.
 
 For our testing purpose please add one admin with the email address: admin@admin.com with password: 123456 -c
 
