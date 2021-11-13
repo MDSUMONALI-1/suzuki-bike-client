@@ -17,7 +17,10 @@ const Header = () => {
                         <Link to="/bikes">Bikes</Link>
                       <Link to="/register">Register</Link>
                         {user?.email ?
-                            <Button onClick={logOut} variant="light">Logout</Button> :
+                            <>
+                                <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link> <br/>
+                                <Button onClick={logOut} variant="light">Logout</Button>
+                            </> :
                             <Nav.Link as={Link} to="/login">Login</Nav.Link>}
                         <Navbar.Text>
                             Signed in as: <a href="#login">{user?.displayName}</a>

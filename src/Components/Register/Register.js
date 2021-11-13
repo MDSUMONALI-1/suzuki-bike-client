@@ -28,6 +28,14 @@ const Register = () => {
     <div>
       <h2>Register</h2>
       {!isLoading &&<form onSubmit={handleLoginSubmit}>
+      <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="name" 
+    name="name"
+    onBlur={handleOnBlur}
+    class="form-control" id="exampleInputEmail1"/>
+   
+  </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" 
@@ -42,7 +50,7 @@ const Register = () => {
     onBlur={handleOnBlur} class="form-control" id="exampleInputPassword1"/>
   </div>
   <div class="mb-3">
-    <label for="Password2" class="form-label">Password</label>
+    <label for="Password2" class="form-label">Retype Password</label>
     <input type="password2"  name="password2"
     onBlur={handleOnBlur} class="form-control" id="exampleInputPassword1"/>
   </div>
