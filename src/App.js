@@ -10,6 +10,7 @@ import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import MakeAdmin from './Components/MakeAdmin/MakeAdmin';
+import ManageProducts from './Components/ManageProducts/ManageProducts';
 import MyOrder from './Components/MyOrder/MyOrder';
 import NotFound from './Components/NotFound/NotFound';
 import Pay from './Components/Pay/Pay';
@@ -62,8 +63,8 @@ function App() {
             <AdminRoute path="/addone">
             <AddOne></AddOne>
             </AdminRoute>
-            <AdminRoute path="/addone">
-            <AddOne></AddOne>
+            <AdminRoute path="/manageproducts">
+            <ManageProducts></ManageProducts>
             </AdminRoute>
             <Route path="*">
               <NotFound></NotFound>

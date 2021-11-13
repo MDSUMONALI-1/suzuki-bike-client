@@ -19,6 +19,7 @@ const Header = () => {
                       {admin && <>
                         <Link to="/makeadmin">makeAdmin</Link>
                         <Link to="/addone">AddOne</Link>
+                        <Link to="/manageproducts">ManageProducts</Link>
                       </>}
                         {user?.email?
                             <>
