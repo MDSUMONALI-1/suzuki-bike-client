@@ -6,7 +6,7 @@ import { Button,Nav,Container,  Navbar } from 'react-bootstrap';
 import './Header.css';
 import useFirebase from '../../hooks/useFirebase';
 const Header = () => {
-    const { user, logOut } = useFirebase();
+    const { user, logOut,admin } = useFirebase();
     return (
         <div>
           <Navbar  collapseOnSelect expand="lg" >
@@ -16,7 +16,11 @@ const Header = () => {
                         <Link  to="/home">Home</Link>
                         <Link to="/bikes">Bikes</Link>
                       <Link to="/register">Register</Link>
-                        {user?.email ?
+                      {admin && <>
+                        <Link to="/makeadmin">makeAdmin</Link>
+                        <Link to="/addone">AddOne</Link>
+                      </>}
+                        {user?.email?
                             <>
                                 <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link> <br/>
                                 <Button onClick={logOut} variant="light">Logout</Button>

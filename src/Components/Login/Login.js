@@ -40,7 +40,7 @@ console.log(field ,value)
   
   <button type="submit" class="btn btn-primary">login</button>
   <br/>
-  <NavLink to="/login">New user?please Register</NavLink>
+  <NavLink to="/register">New user?please Register</NavLink>
 </form>
 {user?.email && <div class="alert alert-success" role="alert">
   ypu are successfully login!

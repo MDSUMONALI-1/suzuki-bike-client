@@ -109,10 +109,10 @@ const useFirebase = () => {
 
     return {
         user,
+      admin,
       
-        // token,
         isLoading,
-        // authError,
+        
         registerUser,
         loginUser,
         signInWithGoogle,

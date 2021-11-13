@@ -1,7 +1,9 @@
 // import { Route,BrowserRouter, Switch } from 'react-router';
 import {  Route,BrowserRouter, Switch } from 'react-router-dom';
 import './App.css';
+import AddOne from './Components/AddOne/AddOne';
 import Bikes from './Components/Bikes/Bikes';
+import AdminRoute from './Components/Dashboard/AdminRoute/AdminRoute';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
@@ -54,9 +56,15 @@ function App() {
             <PrivateRoute path="/pay">
             <Pay></Pay>
             </PrivateRoute>
-            <PrivateRoute path="/makeadmin">
+            <AdminRoute path="/makeadmin">
             <MakeAdmin></MakeAdmin>
-            </PrivateRoute>
+            </AdminRoute>
+            <AdminRoute path="/addone">
+            <AddOne></AddOne>
+            </AdminRoute>
+            <AdminRoute path="/addone">
+            <AddOne></AddOne>
+            </AdminRoute>
             <Route path="*">
               <NotFound></NotFound>
             </Route>
