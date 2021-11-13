@@ -7,6 +7,7 @@ import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
+import MakeAdmin from './Components/MakeAdmin/MakeAdmin';
 import MyOrder from './Components/MyOrder/MyOrder';
 import NotFound from './Components/NotFound/NotFound';
 import Pay from './Components/Pay/Pay';
@@ -53,6 +54,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path="/pay">
             <Pay></Pay>
+            </PrivateRoute>
+            <PrivateRoute path="/makeadmin">
+            <MakeAdmin></MakeAdmin>
             </PrivateRoute>
             <Route path="*">
               <NotFound></NotFound>

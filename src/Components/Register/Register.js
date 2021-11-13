@@ -60,8 +60,12 @@ const Register = () => {
   <NavLink to="/register">Already register?please login</NavLink>
 </form>}
 {isLoading &&<div class="spinner-border text-success" role="status">
+{user?.email && <div class="alert alert-success" role="alert">
+  ypu are successfully registered!
+</div>}
   <span class="sr-only">Loading...</span>
 </div>}
+
 
     </div>
   );

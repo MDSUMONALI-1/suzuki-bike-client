@@ -9,8 +9,8 @@ const Purchase = () => {
     return (
         <div>
            <h2> booking id: {bikeId}</h2>
-            <h3>by:{user?.email}</h3>
-            <h3>by:{user?.name}</h3>
+            <h3>by email:{user?.email}</h3>
+            <h3>by name:{user?.displayName}</h3>
         </div>
     );
 };

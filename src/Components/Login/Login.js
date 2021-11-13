@@ -3,7 +3,7 @@ import { NavLink,useHistory,useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-  const {user, logOut,isLoading,loginUser} =useAuth();
+  const {user,loginUser} =useAuth();
   const [loginData, setLoginData] = useState({});
   const location =useLocation();
   const history= useHistory();
@@ -42,6 +42,9 @@ console.log(field ,value)
   <br/>
   <NavLink to="/login">New user?please Register</NavLink>
 </form>
+{user?.email && <div class="alert alert-success" role="alert">
+  ypu are successfully login!
+</div>}
     </div>
   );
 };
