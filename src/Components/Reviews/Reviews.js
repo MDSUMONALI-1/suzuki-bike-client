@@ -9,11 +9,7 @@ const Reviews = () => {
   
 
     const handleOnBlur = e => {
-        const field = e.target.name;
-        const value = e.target.value;
-        const newInfo = { ...review };
-        newInfo[field] = value;
-        setReview(newInfo);
+        setReview(e.target.value);
     }
     const handleReviewSubmit = e => {
         const userReview = { review};
