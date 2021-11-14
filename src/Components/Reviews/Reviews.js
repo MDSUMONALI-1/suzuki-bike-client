@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import useFirebase from '../../hooks/useFirebase';
 
 const Reviews = () => {
-    const { user } = useFirebase();
-    const initialInfo = { Name: user.displayName, email: user.email, phone: '' }
-    const [review, setReview] = useState(initialInfo);
+   
+    const [review, setReview] = useState('');
   
   
 
@@ -14,7 +12,7 @@ const Reviews = () => {
     const handleReviewSubmit = e => {
         const userReview = { review};
       
-        fetch('https://damp-shore-20321.herokuapp.com/review', {
+        fetch('https://damp-shore-20321.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
