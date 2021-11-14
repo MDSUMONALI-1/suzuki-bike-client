@@ -1,5 +1,4 @@
 import React,{useState, useEffect} from 'react';
-import { Button } from 'react-bootstrap';
 
 
 
@@ -36,7 +35,7 @@ const handleDelete = id =>  {
             {
                 services.map(service => <div key={service._id}>
                     <h3>{service.name}</h3>
-                    <Button onClick={()=> handleDelete(service._id)}>Delete</Button>
+                    <button onClick={()=> handleDelete(service._id)}>Delete</button>
                 </div>)
             }
         </div>
