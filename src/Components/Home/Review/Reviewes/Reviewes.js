@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Service from '../../../Service/Service';
 import Review from '../Review';
 const Reviewes = () => {
     const [reviewes, setReviewes] = useState([])
