@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
 // import { clearTheCart, getStoredCart } from '../../utilities/fakedb';
-
+import './MyOrder.css';
 const MyOrder = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { user } = useAuth();
@@ -22,7 +22,7 @@ const MyOrder = () => {
     };
     return (
         <div>
-        <form className="shipping-form" onSubmit={handleSubmit(onSubmit)}>
+        <form className="myorder" onSubmit={handleSubmit(onSubmit)}>
 
             <input defaultValue={user.displayName} {...register("name")} />
 
