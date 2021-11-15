@@ -1,4 +1,5 @@
 // import { Route,BrowserRouter, Switch } from 'react-router';
+
 import {  Route,BrowserRouter, Switch } from 'react-router-dom';
 import './App.css';
 import AddOne from './Components/AddOne/AddOne';
@@ -14,10 +15,10 @@ import ManageProducts from './Components/ManageProducts/ManageProducts';
 import MyOrder from './Components/MyOrder/MyOrder';
 import NotFound from './Components/NotFound/NotFound';
 import Pay from './Components/Pay/Pay';
+import Feedback from './Components/Feedback/Feedback';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Purchase from './Components/Purchase/Purchase';
 import Register from './Components/Register/Register';
-import Reviews from './Components/Reviews/Reviews';
 import AuthProvider from './contexts/AuthProvider';
 
 function App() {
@@ -52,8 +53,9 @@ function App() {
             <MyOrder></MyOrder>
             </PrivateRoute>
             <PrivateRoute path="/reviews">
-            <Reviews></Reviews>
+            <Feedback></Feedback>
             </PrivateRoute>
+           
             <PrivateRoute path="/pay">
             <Pay></Pay>
             </PrivateRoute>
