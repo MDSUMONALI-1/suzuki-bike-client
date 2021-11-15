@@ -37,6 +37,7 @@ useEffect(() => {
         <div>
            <div className="bike">
            <h2> product id: {bikeId}</h2>
+           <h3>name: {bike.name}</h3>
 <h5>price:{bike.price}</h5>
 <img src={bike.img} alt="" />
            
