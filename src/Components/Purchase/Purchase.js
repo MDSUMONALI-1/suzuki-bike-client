@@ -48,7 +48,7 @@ useEffect(() => {
             <h2>customer details</h2>
            <div className="add-one">
            <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("name", { required: true, maxLength: 20 })} placeholder="Full Name" />
+                <input defaultValue={user.displayName} {...register("name")} />
                 <textarea {...register("address")} placeholder="address" />
                 <input type="number" {...register("phone")} placeholder="phone" />
                

@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React from 'react';
 import { useForm } from "react-hook-form";
+import useAuth from '../../hooks/useAuth';
 import './Feedback.css';
 
 const Feedback = () => {
+    const { user } = useAuth();
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
@@ -22,7 +24,7 @@ const Feedback = () => {
         <div className="add-one">
             <h2>Please give a Feedback</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("name", { required: true, maxLength: 20 })} placeholder="Name" />
+            <input defaultValue={user.displayName} {...register("name")} />
                 <textarea {...register("review")} placeholder="review" />
                 
                 <input type="submit" />
