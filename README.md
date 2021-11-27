@@ -14,3 +14,4 @@ review.
 6.The login users will be able to manage his/her orders.
 
 7. This project is designed using the css framework ReactBootstrap.
+8.customer also give review.
